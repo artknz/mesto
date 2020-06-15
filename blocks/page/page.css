@@ -1,0 +1,14 @@
+* {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: green;
+}
+
+.page {
+  margin: 0;
+  position: relative;
+  background: #000000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  min-width: 300px;
+}
