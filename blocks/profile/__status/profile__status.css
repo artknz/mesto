@@ -4,3 +4,12 @@
   color: #ffffff;
   margin: 16px 0 0;
 }
+
+@media screen and (max-width: 640px) {
+  .profile__status {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin-top: 14px;
+  }
+}

@@ -5,4 +5,14 @@
   color: #ffffff;
   margin: 0;
   max-width: 295px;
+  max-height: 43px;
+}
+
+@media screen and (max-width: 640px) {
+  .profile__name {
+    font-size: 27px;
+    max-height: 38px;
+    min-width: 201px;
+    margin: 14px 0 0;
+  }
 }
