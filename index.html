@@ -22,10 +22,10 @@
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <div class="profile__edit-button"></div>
+          <button class="profile__edit-button profile__open-popup"></button>
           <p class="profile__status">Исследователь океана</p>
         </div>
-        <div class="profile__add-button"></div>
+        <button class="profile__add-button"></button>
       </section>
       <section class="elements">
         <div class="element">
@@ -43,23 +43,23 @@
           </div>
         </div>
         <div class="element">
-          <img src="./images/photo-fuji.jpg" alt="вулкан Фудзияма" class="element__image">
+          <img src="./images/photo-sakhalin.jpg" alt="остров Сахалин" class="element__image">
           <div class="element__title">
-            <h3 class="element__text">Фудзияма</h3>
+            <h3 class="element__text">Сахалин</h3>
             <div class="element__like"></div>
           </div>
         </div>
         <div class="element">
-          <img src="./images/photo-london.jpg" alt="Лондон" class="element__image">
+          <img src="./images/photo-suzdal.jpg" alt="Суздаль" class="element__image">
           <div class="element__title">
-            <h3 class="element__text">Лондон</h3>
+            <h3 class="element__text">Суздаль</h3>
             <div class="element__like"></div>
           </div>
         </div>
         <div class="element">
-          <img src="./images/photo-new-york.jpg" alt="Нью-Йорк" class="element__image">
+          <img src="./images/photo-yeisk.jpg" alt="Ейск" class="element__image">
           <div class="element__title">
-            <h3 class="element__text">Нью-Йорк</h3>
+            <h3 class="element__text">Ейск</h3>
             <div class="element__like"></div>
           </div>
         </div>
@@ -75,6 +75,16 @@
     <footer class="footer">
       <p class="footer__item">&#169; 2020 Mesto Russia</p>
     </footer>
+    <section class="popup">
+      <form class="popup__container">
+        <div class="popup__close"></div>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__name">
+        <input type="text" class="popup__status">
+        <button type="submit" class="popup__save">Сохранить</button>
+      </form>
+    </section>
   </div>
 </body>
+<script type="text/javascript" src="scripts/index.js"></script>
 </html>

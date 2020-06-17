@@ -6,6 +6,12 @@
   margin: 52px auto 0;
 }
 
+@media screen and (max-width: 890px) {
+  .elements {
+    max-width: 585px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .elements {
     grid-gap: 20px;

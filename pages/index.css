@@ -4,9 +4,6 @@
 /*Общие стили*/
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
-@import url();
-@import url();
-@import url();
 
 /*Блоки*/
 @import url(../blocks/header/header.css);
@@ -14,3 +11,4 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/popup/popup.css);

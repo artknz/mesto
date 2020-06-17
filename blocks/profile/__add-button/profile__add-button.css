@@ -2,6 +2,7 @@
   background-image: url(../../../images/plus-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #000000;
   max-width: 150px;
   min-height: 50px;
   width: 100%;
@@ -10,6 +11,13 @@
   border: 2px solid #ffffff;
   box-sizing: border-box;
   border-radius: 2px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.profile__add-button:hover {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background-image: url(../../../images/add-icon-hover.svg);
 }
 
 @media screen and (max-width: 640px) {

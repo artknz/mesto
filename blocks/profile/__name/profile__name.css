@@ -5,14 +5,17 @@
   color: #ffffff;
   margin: 0;
   max-width: 295px;
-  max-height: 43px;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 640px) {
   .profile__name {
     font-size: 27px;
-    max-height: 38px;
-    min-width: 201px;
+    max-width: 201px;
     margin: 14px 0 0;
+    text-align: center;
   }
 }
