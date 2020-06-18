@@ -1,3 +1,9 @@
+* {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: green;
+}
+
 .page {
   margin: 0;
   position: relative;

@@ -8,7 +8,6 @@
 .profile {
   position: relative;
   max-width: 882px;
-  min-height: 120px;
   width: 100%;
   margin: 45px auto 0;
   display: flex;

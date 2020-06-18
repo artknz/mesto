@@ -13,7 +13,7 @@
   <div class="page">
     <header class="header">
       <a href="#" class="header__link">
-        <img src="./images/header-logo.svg" alt="логотип Mesto" class="header-logo">
+        <img src="./images/header-logo.svg" alt="логотип Mesto" class="header__logo">
       </a>
       <div class="header__line"></div>
     </header>
@@ -22,52 +22,52 @@
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button profile__open-popup"></button>
+          <button class="profile__edit-button profile__edit-button_type_open"></button>
           <p class="profile__status">Исследователь океана</p>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button profile__add-button_type_open"></button>
       </section>
       <section class="elements">
         <div class="element">
           <img src="./images/photo-karachaevsk.jpg" alt="горный монастырь" class="element__image">
           <div class="element__title">
-            <p class="element__text">Карачаевск</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Карачаевск</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo-elbrus.jpg" alt="гора Эльбрус" class="element__image">
           <div class="element__title">
-            <p class="element__text">Эльбрус</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Эльбрус</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo-sakhalin.jpg" alt="остров Сахалин" class="element__image">
           <div class="element__title">
-            <p class="element__text">Сахалин</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Сахалин</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo-suzdal.jpg" alt="Суздаль" class="element__image">
           <div class="element__title">
-            <p class="element__text">Суздаль</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Суздаль</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo-yeisk.jpg" alt="Ейск" class="element__image">
           <div class="element__title">
-            <p class="element__text">Ейск</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Ейск</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo-dombay.jpg" alt="Домбай" class="element__image">
           <div class="element__title">
-            <p class="element__text">Домбай</p>
-            <div class="element__like"></div>
+            <h3 class="element__text">Домбай</h3>
+            <button type="button" class="element__like"></button>
           </div>
         </div>
       </section>
@@ -76,11 +76,11 @@
       <p class="footer__item">&#169; 2020 Mesto Russia</p>
     </footer>
     <section class="popup">
-      <form class="popup__container">
-        <div class="popup__close"></div>
+      <form name="profile-popup" method="POST" action="#" class="popup__container">
+        <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__name">
-        <input type="text" class="popup__status">
+        <input type="text" placeholder="Имя" required class="popup__field popup__field_type_name">
+        <input type="text" placeholder="Статус" required class="popup__field popup__field_type_status">
         <button type="submit" class="popup__save">Сохранить</button>
       </form>
     </section>
