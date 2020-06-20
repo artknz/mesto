@@ -1,6 +1,7 @@
-const popup = document.querySelector('.popup')
-const popupOpenButton = document.querySelector('.profile__edit-button_type_open')
-const popupCloseButton = popup.querySelector('.popup__close')
+// Константы и переменные
+const popup = document.querySelector('.popup');
+const popupOpenButton = document.querySelector('.profile__edit-button');
+const popupCloseButton = popup.querySelector('.popup__close');
 
 let nameInput = document.querySelector('.popup__field_type_name');
 let jobInput = document.querySelector('.popup__field_type_status');
@@ -10,16 +11,14 @@ let profileStatus = document.querySelector('.profile__status');
 
 let formElement = document.querySelector('.popup__container');
 
-const popupAdd = function () {
-  popup.classList.add('popup_opened');
+// Обработчик открытия и закрытия попапа и заполнения полей формы
+const popupToggle = function () {
+  popup.classList.toggle('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileStatus.textContent;
 }
 
-const popupRemove = function () {
-  popup.classList.remove('popup_opened');
-}
-
+// Обработчик отправки формы
 function formSubmitHandler (evt) {
     evt.preventDefault();
 
@@ -29,10 +28,10 @@ function formSubmitHandler (evt) {
     profileName.textContent = nameInputItem;
     profileStatus.textContent = jobInputItem;
 
-    popupRemove()
+    popupToggle()
 }
-
-popupOpenButton.addEventListener('click', popupAdd);
-popupCloseButton.addEventListener('click', popupRemove);
+// Регистраторы событий
+popupOpenButton.addEventListener('click', popupToggle);
+popupCloseButton.addEventListener('click', popupToggle);
 
 formElement.addEventListener('submit', formSubmitHandler);

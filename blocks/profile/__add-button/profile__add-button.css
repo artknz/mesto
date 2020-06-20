@@ -13,6 +13,7 @@
   border-radius: 2px;
   cursor: pointer;
   box-shadow: none;
+  outline: none;
 }
 
 .profile__add-button:hover {

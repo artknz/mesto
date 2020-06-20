@@ -15,17 +15,16 @@
       <a href="#" class="header__link">
         <img src="./images/header-logo.svg" alt="логотип Mesto" class="header__logo">
       </a>
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button profile__edit-button_type_open"></button>
+          <button type="button" class="profile__edit-button"></button>
           <p class="profile__status">Исследователь океана</p>
         </div>
-        <button class="profile__add-button profile__add-button_type_open"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <div class="element">
@@ -79,8 +78,8 @@
       <form name="profile-popup" method="POST" action="#" class="popup__container">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" placeholder="Имя" required class="popup__field popup__field_type_name">
-        <input type="text" placeholder="Статус" required class="popup__field popup__field_type_status">
+        <input type="text" placeholder="Имя" name="popup__item" required class="popup__field popup__field_type_name">
+        <input type="text" placeholder="Статус" name="popup__item" required class="popup__field popup__field_type_status">
         <button type="submit" class="popup__save">Сохранить</button>
       </form>
     </section>
