@@ -14,8 +14,10 @@ let formElement = document.querySelector('.popup__container');
 // Обработчик открытия и закрытия попапа и заполнения полей формы
 const popupToggle = function () {
   popup.classList.toggle('popup_opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileStatus.textContent;
+  if (popup.classList.contains('popup_opened')){
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileStatus.textContent;
+  }
 }
 
 // Обработчик отправки формы

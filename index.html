@@ -21,10 +21,10 @@
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button"></button>
+          <button type="button" aria-label="Редактировать" class="profile__edit-button"></button>
           <p class="profile__status">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" aria-label="Добавить" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <div class="element">
@@ -76,7 +76,7 @@
     </footer>
     <section class="popup">
       <form name="profile-popup" method="POST" action="#" class="popup__container">
-        <button type="button" class="popup__close"></button>
+        <button type="button" aria-label="Закрыть" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <input type="text" placeholder="Имя" name="popup__item" required class="popup__field popup__field_type_name">
         <input type="text" placeholder="Статус" name="popup__item" required class="popup__field popup__field_type_status">
