@@ -84,6 +84,8 @@ let linkInput = document.querySelector('.popup__field_type_link');
 
 let editForm = document.querySelector('.popup__container_type_add');
 
+
+
 //Функция добавления карточки
 function addCard(item) {
   const element = cardsTemplateElement.content.cloneNode(true);
@@ -91,6 +93,7 @@ function addCard(item) {
   element.querySelector('.element__image').src = item.link;
   element.querySelector('.element__text').textContent = item.name;
   element.querySelector('.element__image').alt = item.name;
+  element.querySelector('.element__delete').addEventListener('click', deleteCard);
 
   initialCardsElement.prepend(element);
 }
@@ -102,6 +105,7 @@ initialCards.forEach(item =>{
 addButtonElement.addEventListener('click', () => popupToggle(addCardPopup));
 closeButtonCards.addEventListener('click', () => popupToggle(addCardPopup));
 editForm.addEventListener('submit', formSubmitCard);
+
 
 //Обработчик отправки формы добавления карточек
 function formSubmitCard (evt) {
@@ -117,4 +121,18 @@ function formSubmitCard (evt) {
 
   addCard(inputData);
   popupToggle(addCardPopup);
-}
+};
+
+function deleteCard(e) {
+  const element = e.target.closest('.element');
+
+  element.remove();
+};
+
+const likeButton = document.querySelector('.element__like');
+
+const likeToggle = function() {
+  likeButton.classList.toggle('element_liked');
+};
+
+likeButton.addEventListener('click', likeToggle);
