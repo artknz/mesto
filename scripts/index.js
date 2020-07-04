@@ -84,6 +84,15 @@ let linkInput = document.querySelector('.popup__field_type_link');
 
 let editForm = document.querySelector('.popup__container_type_add');
 
+//Открытие попапа картинки
+const imagePopupCapture = document.querySelector('.element__image');
+const imagePopupTitile = document.querySelector('.element__text');
+const imagePopup = document.querySelector('.popup_image');
+const imageCapture = document.querySelector('.popup__capture');
+const imageTitle = document.querySelector('.popup__titile');
+
+const imagePopupClose = document.querySelector('.popup__close_type_image');
+
 //Функция добавления карточки
 function addCard(item) {
   const element = cardsTemplateElement.content.cloneNode(true);
@@ -93,6 +102,15 @@ function addCard(item) {
   element.querySelector('.element__image').alt = item.name;
   element.querySelector('.element__delete').addEventListener('click', deleteCard);
   element.querySelector('.element__like').addEventListener('click', likeCard);
+  element.querySelector('.element__image').addEventListener('click', function(event) {
+    let popupImg = event.target.closest('.element__image');
+
+    imageCapture.src = popupImg.src;
+    imageCapture.alt = popupImg.alt;
+    imageTitle.textContent = popupImg.alt;
+
+    popupToggle(imagePopup);
+  });
 
   initialCardsElement.prepend(element);
 }
@@ -104,6 +122,8 @@ initialCards.forEach(item =>{
 addButtonElement.addEventListener('click', () => popupToggle(addCardPopup));
 closeButtonCards.addEventListener('click', () => popupToggle(addCardPopup));
 editForm.addEventListener('submit', formSubmitCard);
+
+imagePopupClose.addEventListener('click', () => popupToggle(imagePopup));
 
 
 //Обработчик отправки формы добавления карточек

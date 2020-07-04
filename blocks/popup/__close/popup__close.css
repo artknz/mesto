@@ -1,7 +1,7 @@
 .popup__close {
   background-image: url(../../../images/close-icon.svg);
   background-position: center;
-  background-color: #000;
+  background-color: transparent;
   border: none;
   box-sizing: border-box;
   max-width: 40.7px;
