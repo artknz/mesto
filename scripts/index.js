@@ -12,7 +12,7 @@ let jobInput = document.querySelector('.popup__field_type_status');
 let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
 
-let formElement = document.querySelector('.popup_container_type_edit');
+const formElement = document.querySelector('.popup_container_type_edit');
 
 // Обработчик открытия и закрытия попапа и заполнения полей формы
 const popupToggle = function(popup) {
@@ -47,33 +47,6 @@ popupCloseButton.addEventListener('click', () => popupToggle(editProfilePopup));
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-//Массив с начальными картинками
-const initialCards = [{
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const initialCardsElement = document.querySelector('.elements');
 const addButtonElement = document.querySelector('.profile__add-button');
 const closeButtonCards = document.querySelector('.popup__close_type_cards');
@@ -82,14 +55,14 @@ const cardsTemplateElement = document.querySelector('.elements-template');
 let titleInput = document.querySelector('.popup__field_type_title');
 let linkInput = document.querySelector('.popup__field_type_link');
 
-let editForm = document.querySelector('.popup__container_type_add');
+const editForm = document.querySelector('.popup__container_type_add');
 
 //Открытие попапа картинки
-const imagePopupCapture = document.querySelector('.element__image');
-const imagePopupTitile = document.querySelector('.element__text');
-const imagePopup = document.querySelector('.popup_image');
-const imageCapture = document.querySelector('.popup__capture');
-const imageTitle = document.querySelector('.popup__titile');
+let imagePopupCapture = document.querySelector('.element__image');
+let imagePopupTitile = document.querySelector('.element__text');
+let imagePopup = document.querySelector('.popup_image');
+let imageCapture = document.querySelector('.popup__capture');
+let imageTitle = document.querySelector('.popup__titile');
 
 const imagePopupClose = document.querySelector('.popup__close_type_image');
 
@@ -140,6 +113,7 @@ function formSubmitCard (evt) {
 
   addCard(inputData);
   popupToggle(addCardPopup);
+  editForm.reset();
 };
 
 //Функция удаления карточки
