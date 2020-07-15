@@ -31,21 +31,23 @@ const hasInvalidInput = (inputList) => {
 };
 
 //Функция включения/отключения кнопки submit
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (config, inputList) => {
   console.log(hasInvalidInput(inputList));
+  const buttonElement = document.querySelector(config.submitButtonSelector);
+
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save_inactive');
+    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.setAttribute("disabled", true);
   } else {
-    buttonElement.classList.remove('popup__save_inactive');
+    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.removeAttribute("disabled");
   }
 };
 
 //Функция добавления обработчиков всем полям форм
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
-  const buttonElement = formElement.querySelector('.popup__save');
+const setEventListeners = (config, formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const buttonElement = document.querySelectorAll(config.submitButtonSelector);
 
   toggleButtonState(inputList, buttonElement);
 
@@ -58,8 +60,8 @@ const setEventListeners = (formElement) => {
 };
 
 //Функция добавления обработчиков всем формам
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__container'));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
@@ -69,13 +71,13 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
+const config = {
+  formSelector: '.popup__container_form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_inactive',
+  inputErrorClass: 'popup__field-error',
+  errorClass: 'popup__field-error_active'
+};
 
-// const config = {
-//   formSelector: '.popup__container',
-//   inputSelector: '.popup__field',
-//   submitButtonSelector: '.popup__save',
-//   inactiveButtonClass: 'popup__save_inactive',
-//   inputErrorClass: 'popup__field-error',
-//   errorClass: 'popup__field-error_active'
-// };
+enableValidation(config);
