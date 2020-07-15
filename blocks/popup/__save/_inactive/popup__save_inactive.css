@@ -6,7 +6,3 @@
   box-sizing: border-box;
   border-radius: 2px;
 }
-
-.popup__save:hover {
-  background: white;
-}

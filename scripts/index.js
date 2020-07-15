@@ -12,7 +12,7 @@ let jobInput = document.querySelector('.popup__field_type_status');
 let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
 
-const formElement = document.querySelector('.popup_container_type_edit');
+const formEdit = document.querySelector('.popup_container_type_edit');
 
 // Обработчик открытия и закрытия попапа и заполнения полей формы
 const popupToggle = function(popup) {
@@ -45,7 +45,7 @@ popupOpenButton.addEventListener('click', () => popupToggle(editProfilePopup));
 popupOpenButton.addEventListener('click', () => addInputText(editProfilePopup));
 popupCloseButton.addEventListener('click', () => popupToggle(editProfilePopup));
 
-formElement.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', formSubmitHandler);
 
 const initialCardsElement = document.querySelector('.elements');
 const addButtonElement = document.querySelector('.profile__add-button');
@@ -55,7 +55,7 @@ const cardsTemplateElement = document.querySelector('.elements-template');
 let titleInput = document.querySelector('.popup__field_type_title');
 let linkInput = document.querySelector('.popup__field_type_link');
 
-const editForm = document.querySelector('.popup__container_type_add');
+const formAdd = document.querySelector('.popup__container_type_add');
 
 //Открытие попапа картинки
 let imagePopupCapture = document.querySelector('.element__image');
@@ -94,7 +94,7 @@ initialCards.forEach(item =>{
 
 addButtonElement.addEventListener('click', () => popupToggle(addCardPopup));
 closeButtonCards.addEventListener('click', () => popupToggle(addCardPopup));
-editForm.addEventListener('submit', formSubmitCard);
+formAdd.addEventListener('submit', formSubmitCard);
 
 imagePopupClose.addEventListener('click', () => popupToggle(imagePopup));
 
@@ -113,7 +113,7 @@ function formSubmitCard (evt) {
 
   addCard(inputData);
   popupToggle(addCardPopup);
-  editForm.reset();
+  formAdd.reset();
 };
 
 //Функция удаления карточки
