@@ -20,7 +20,7 @@ const hideInputError = (formElement, inputElement) => {
 
 //Функция проверки валидности поля
 const isValid = (formElement, inputElement) => {
-  if (!formInput.validity.valid) {
+  if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement);
@@ -49,8 +49,6 @@ const setEventListeners = (formElement) =>{
   const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
   const buttonElement = formElement.querySelector('.popup__save');
 
-  // toggleButtonState(inputList, buttonElement);
-
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement);
@@ -74,11 +72,17 @@ const enableValidation = () => {
 
 enableValidation();
 
-// enableValidation({
+// const config = {
 //   formSelector: '.popup__container_form',
 //   inputSelector: '.popup__field',
 //   submitButtonSelector: '.popup__save',
 //   inactiveButtonClass: 'popup__save_inactive',
 //   inputErrorClass: 'popup__field-error',
 //   errorClass: 'popup__field-error_active'
+// };
+
+
+
+// enableValidation({
+
 // });

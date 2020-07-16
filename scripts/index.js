@@ -17,6 +17,14 @@ const formEdit = document.querySelector('.popup_container_type_edit');
 // Обработчик открытия и закрытия попапа и заполнения полей формы
 const popupToggle = function(popup) {
   popup.classList.toggle('popup_opened');
+
+  if(popup.classList.contains('popup_opened')) {
+    document.addEventListener('keydown', closeEsc);
+    popup.addEventListener('click', closePopupByOverlay);
+  } else {
+    document.removeEventListener('keydown', closeEsc);
+    popup.removeEventListener('click', closePopupByOverlay);
+  }
 }
 
 //Добавление текста со старницы в форму
@@ -128,4 +136,24 @@ function likeCard(e) {
   const like = e.target.closest('.element__like');
 
   like.classList.toggle('element_liked');
+};
+
+//Функция закрытия попапов клавишей esc
+function closeEsc (e) {
+  console.log(e.target);
+  console.log(e.currentTarget);
+  if (e.keyCode === 27) {
+    let openedPopup = document.querySelector('.popup_opened');
+    openedPopup.classList.remove('popup_opened');
+  }
+};
+
+//Функция закрытия попапов по клику на overlay
+const closePopupByOverlay = function (e) {
+  if (event.target !== event.currentTarget) {
+    return
+  } else {
+    let openedOverlay = document.querySelector('.popup_opened');
+    openedOverlay.classList.remove('popup_opened');
+  }
 };
