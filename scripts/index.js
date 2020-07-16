@@ -33,7 +33,7 @@ const addInputText = function() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileStatus.textContent;
   }
-}
+};
 
 // Обработчик отправки формы редактирования профиля
 function formSubmitHandler (evt) {
