@@ -7,8 +7,9 @@
   width: 100%;
   margin-left: auto;
   align-self: center;
-  border: none;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .element__like:hover {
