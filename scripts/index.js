@@ -37,12 +37,6 @@ const togglePopup = function(popup) {
   if(popup.classList.contains('popup_opened')) {
     document.addEventListener('keydown', closeEsc);
     popup.addEventListener('click', closePopupByOverlay);
-
-    const formElement = document.querySelector('.popup_opened');
-    const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
-    const buttonElement = formElement.querySelector('.popup__save');
-
-    toggleButtonState(inputList, buttonElement, config);
   } else {
     document.removeEventListener('keydown', closeEsc);
     popup.removeEventListener('click', closePopupByOverlay);
@@ -102,6 +96,7 @@ function addCard(item) {
 //Обработчик отправки формы добавления карточек
 function handlerAddFormSubmit (evt) {
   evt.preventDefault();
+  const buttonElement = addCardPopup.querySelector(config.submitButtonSelector);
 
   let titleInputItem = titleInput.value;
   let linkInputItem = linkInput.value;
@@ -113,6 +108,7 @@ function handlerAddFormSubmit (evt) {
 
   renderCard(inputData);
   togglePopup(addCardPopup);
+  onDisableButton(buttonElement, config.inactiveButtonClass);
   formAdd.reset();
 }
 

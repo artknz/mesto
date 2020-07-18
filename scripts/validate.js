@@ -30,13 +30,22 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
+//Включение/отключение кнопки submit
+const onDisableButton = function (buttonElement, inactiveButtonClass) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+}
+
+const offDisableButton = function (buttonElement, inactiveButtonClass) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
+}
+
 const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
+    onDisableButton(buttonElement, inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
+    offDisableButton(buttonElement, inactiveButtonClass);
   }
 };
 
