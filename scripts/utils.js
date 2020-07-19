@@ -1,26 +1,26 @@
 //Массив с начальными картинками
 const initialCards = [{
-  name: 'Архыз',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  name: 'Байкал',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
 },
 {
-  name: 'Челябинская область',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-},
-{
-  name: 'Иваново',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  name: 'Приморье',
+  link: 'https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2019-07/RIAN_5610933.HR_.ru_.jpg'
 },
 {
   name: 'Камчатка',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  link: 'https://www.tripzaza.com/ru/destinations/files/2018/09/1-The_Valley_of_Geysers-e1549341062455.jpg'
 },
 {
-  name: 'Холмогорский район',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  name: 'Ейский лиман',
+  link: 'https://i.pinimg.com/originals/d3/8e/1b/d38e1b9416a466adfb409d5725ea676d.jpg'
 },
 {
-  name: 'Байкал',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  name: 'Башкирия',
+  link: 'https://nashural.ru/assets/uploads/sterlitamak-shihany-logo.jpg'
+},
+{
+  name: 'Сахалин',
+  link: 'https://undergroundexpert.info/wp-content/uploads/2017/11/sahalin-foto925.png'
 }
 ];
