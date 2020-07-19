@@ -17,7 +17,7 @@ const initialCards = [{
 },
 {
   name: 'Башкирия',
-  link: 'https://nashural.ru/assets/uploads/sterlitamak-shihany-logo.jpg'
+  link: 'https://samovar.travel/upload/resize_cache/iblock/45a/45ab924d49c204cad5ca22720d1dfe06/767_575_2/1497.jpg'
 },
 {
   name: 'Сахалин',
