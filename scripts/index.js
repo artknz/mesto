@@ -1,6 +1,6 @@
-import Card from './card.js';
-import {initialCards, togglePopup, config} from './utils.js';
-import {onDisableButton, offDisableButton} from './validate.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
 
 //Переменные редактирования профиля
 const popupEdit = document.querySelector('.popup');
@@ -27,26 +27,6 @@ const cardsTemplateElement = document.querySelector('.elements-template');
 const titleInput = document.querySelector('.popup__field_type_title');
 const linkInput = document.querySelector('.popup__field_type_link');
 
-//Переменные попапа картинки
-const imagePopup = document.querySelector('.popup_image');
-const imageCapture = document.querySelector('.popup__capture');
-const imageTitle = document.querySelector('.popup__titile');
-
-// const imagePopupClose = document.querySelector('.popup__close_type_image');
-
-// // Обработчик открытия/закрытия попапа и слушатели закрытия по esc/overlay
-// const togglePopup = function(popup) {
-//   popup.classList.toggle('popup_opened');
-
-//   if(popup.classList.contains('popup_opened')) {
-//     document.addEventListener('keydown', closeEsc);
-//     popup.addEventListener('click', closePopupByOverlay);
-//   } else {
-//     document.removeEventListener('keydown', closeEsc);
-//     popup.removeEventListener('click', closePopupByOverlay);
-//   }
-// }
-
 //Открытие попапа и добавление текста со страницы в форму
 const addInputText = function() {
   nameInput.value = profileName.textContent;
@@ -67,35 +47,6 @@ function handlerEditFormSubmit (evt) {
 
     togglePopup(editProfilePopup);
 }
-
-// function renderCard(item) {
-//   const card = new Card(item);
-//   initialCardsElement.prepend(card);
-// }
-
-// //Функция добавления карточки
-// function addCard(item) {
-//   const element = cardsTemplateElement.content.cloneNode(true);
-//   const imagePopupCapture = element.querySelector('.element__image');
-//   const imagePopupTitile = element.querySelector('.element__text');
-//   const imagePopupDelite = element.querySelector('.element__delete');
-//   const imagePopupLike = element.querySelector('.element__like');
-
-//   imagePopupCapture.src = item.link;
-//   imagePopupTitile.textContent = item.name;
-//   imagePopupCapture.alt = item.name;
-
-//   imagePopupDelite.addEventListener('click', deleteCard);
-//   imagePopupLike.addEventListener('click', likeCard);
-//   imagePopupCapture.addEventListener('click', function(event) {
-//       imageCapture.src = imagePopupCapture.src;
-//       imageCapture.alt = imagePopupCapture.alt;
-//       imageTitle.textContent = imagePopupCapture.alt;
-//       togglePopup(imagePopup);
-//     });
-
-//   return element;
-// }
 
 //Обработчик отправки формы добавления карточек
 function handlerAddFormSubmit (evt) {
@@ -119,36 +70,6 @@ function handlerAddFormSubmit (evt) {
   formAdd.reset();
 }
 
-// //Функция удаления карточки
-// function deleteCard(e) {
-//   const element = e.target.closest('.element');
-
-//   element.remove();
-// }
-
-//Лайк карточки
-// function likeCard(e) {
-//   const like = e.target.closest('.element__like');
-
-//   like.classList.toggle('element_liked');
-// }
-
-// //Функция закрытия попапов клавишей esc
-// function closeEsc (e) {
-//   if (e.keyCode === 27) {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     togglePopup(openedPopup);
-//   }
-// }
-
-// //Функция закрытия попапов по клику на overlay
-// const closePopupByOverlay = function (e) {
-//   if (event.target === event.currentTarget) {
-//     const openedOverlay = document.querySelector('.popup_opened');
-//     togglePopup(openedOverlay);
-//   }
-// };
-
 // Слушатели событий
 popupEditOpenButton.addEventListener('click', () => addInputText(editProfilePopup));
 popupEditCloseButton.addEventListener('click', () => togglePopup(editProfilePopup));
@@ -159,15 +80,15 @@ addButtonElement.addEventListener('click', () => togglePopup(addCardPopup));
 closeButtonCards.addEventListener('click', () => togglePopup(addCardPopup));
 formAdd.addEventListener('submit', handlerAddFormSubmit);
 
-// imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
-
 initialCards.forEach((item) => {
   const card = new Card(item, cardsTemplateElement);
   const element = card.generateCard();
 
   initialCardsElement.prepend(element);
-})
+});
 
-// initialCards.forEach(item =>{
-//   renderCard(item);
-// });
+const formEditValidator = new FormValidator(config, formEdit);
+formEditValidator.enableValidation();
+
+const formAddValidator = new FormValidator(config, formAdd);
+formAddValidator.enableValidation();

@@ -25,6 +25,7 @@ export const initialCards = [{
 }
 ];
 
+//Переменные попапа картинки
 export const imagePopup = document.querySelector('.popup_image');
 export const imageCapture = document.querySelector('.popup__capture');
 export const imageTitle = document.querySelector('.popup__titile');
@@ -59,6 +60,7 @@ const closePopupByOverlay = function (e) {
   }
 };
 
+//Закрытие попапа картинки
 imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
 
 export const config = {
@@ -69,3 +71,14 @@ export const config = {
   inputErrorClass: 'popup__field_type_error',
   errorClass: 'popup__field-error_active'
 };
+
+//Включение/отключение кнопки submit
+export const onDisableButton = function (buttonElement, inactiveButtonClass) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+}
+
+export const offDisableButton = function (buttonElement, inactiveButtonClass) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
+}
