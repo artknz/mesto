@@ -1,5 +1,5 @@
 //Массив с начальными картинками
-const initialCards = [{
+export const initialCards = [{
   name: 'Байкал',
   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
 },
@@ -24,3 +24,48 @@ const initialCards = [{
   link: 'https://undergroundexpert.info/wp-content/uploads/2017/11/sahalin-foto925.png'
 }
 ];
+
+export const imagePopup = document.querySelector('.popup_image');
+export const imageCapture = document.querySelector('.popup__capture');
+export const imageTitle = document.querySelector('.popup__titile');
+export const imagePopupClose = document.querySelector('.popup__close_type_image');
+
+// Обработчик открытия/закрытия попапа и слушатели закрытия по esc/overlay
+export const togglePopup = function(popup) {
+  popup.classList.toggle('popup_opened');
+
+  if(popup.classList.contains('popup_opened')) {
+    document.addEventListener('keydown', closeEsc);
+    popup.addEventListener('click', closePopupByOverlay);
+  } else {
+    document.removeEventListener('keydown', closeEsc);
+    popup.removeEventListener('click', closePopupByOverlay);
+  }
+}
+
+//Функция закрытия попапов клавишей esc
+function closeEsc (e) {
+  if (e.keyCode === 27) {
+    const openedPopup = document.querySelector('.popup_opened');
+    togglePopup(openedPopup);
+  }
+}
+
+//Функция закрытия попапов по клику на overlay
+const closePopupByOverlay = function (e) {
+  if (event.target === event.currentTarget) {
+    const openedOverlay = document.querySelector('.popup_opened');
+    togglePopup(openedOverlay);
+  }
+};
+
+imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
+
+export const config = {
+  formSelector: '.popup__container_form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_inactive',
+  inputErrorClass: 'popup__field_type_error',
+  errorClass: 'popup__field-error_active'
+};

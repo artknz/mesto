@@ -31,12 +31,12 @@ const hasInvalidInput = (inputList) => {
 };
 
 //Включение/отключение кнопки submit
-const onDisableButton = function (buttonElement, inactiveButtonClass) {
+export const onDisableButton = function (buttonElement, inactiveButtonClass) {
   buttonElement.classList.add(inactiveButtonClass);
   buttonElement.setAttribute("disabled", true);
 }
 
-const offDisableButton = function (buttonElement, inactiveButtonClass) {
+export const offDisableButton = function (buttonElement, inactiveButtonClass) {
   buttonElement.classList.remove(inactiveButtonClass);
   buttonElement.removeAttribute("disabled");
 }
