@@ -1,5 +1,5 @@
 import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
-
+import Card from './Сard.js';
 import FormValidator from './FormValidator.js';
 
 //Переменные редактирования профиля
