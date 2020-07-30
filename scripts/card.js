@@ -9,7 +9,7 @@ export default class Card {
 
   _getTemplate() {
     const cardTemplate = document
-    .querySelector('.elements-template')
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.element')
     .cloneNode(true)
@@ -21,7 +21,6 @@ export default class Card {
     this._cardElement = this._getTemplate();
     this._cardImage = this._cardElement.querySelector('.element__image');
     this._cardText = this._cardElement.querySelector('.element__text');
-    this._cardClose = this._cardElement.querySelector('.popup__close_type_image');
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;

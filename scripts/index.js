@@ -1,6 +1,6 @@
+import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
 
 //Переменные редактирования профиля
 const popupEdit = document.querySelector('.popup');
@@ -22,7 +22,7 @@ const addCardPopup = document.querySelector('.popup_addcard');
 const initialCardsElement = document.querySelector('.elements');
 const addButtonElement = document.querySelector('.profile__add-button');
 const closeButtonCards = document.querySelector('.popup__close_type_cards');
-const cardsTemplateElement = document.querySelector('.elements-template');
+const cardTemplateSelector = '.elements-template';
 
 const titleInput = document.querySelector('.popup__field_type_title');
 const linkInput = document.querySelector('.popup__field_type_link');
@@ -39,8 +39,8 @@ const addInputText = function() {
 function handlerEditFormSubmit (evt) {
     evt.preventDefault();
 
-    let nameInputItem = nameInput.value;
-    let jobInputItem = jobInput.value;
+    const nameInputItem = nameInput.value;
+    const jobInputItem = jobInput.value;
 
     profileName.textContent = nameInputItem;
     profileStatus.textContent = jobInputItem;
@@ -53,15 +53,15 @@ function handlerAddFormSubmit (evt) {
   evt.preventDefault();
   const buttonElement = addCardPopup.querySelector(config.submitButtonSelector);
 
-  let titleInputItem = titleInput.value;
-  let linkInputItem = linkInput.value;
+  const titleInputItem = titleInput.value;
+  const linkInputItem = linkInput.value;
 
   const inputData = {
     name: titleInputItem,
     link: linkInputItem
   };
 
-  const card = new Card(inputData, cardsTemplateElement);
+  const card = new Card(inputData, cardTemplateSelector);
   const element = card.generateCard();
 
   initialCardsElement.prepend(element);
@@ -81,7 +81,7 @@ closeButtonCards.addEventListener('click', () => togglePopup(addCardPopup));
 formAdd.addEventListener('submit', handlerAddFormSubmit);
 
 initialCards.forEach((item) => {
-  const card = new Card(item, cardsTemplateElement);
+  const card = new Card(item, cardTemplateSelector);
   const element = card.generateCard();
 
   initialCardsElement.prepend(element);
