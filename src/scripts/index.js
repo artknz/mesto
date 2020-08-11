@@ -1,6 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
+import '../pages/index.css';
 
 //Переменные редактирования профиля
 const popupEdit = document.querySelector('.popup');
