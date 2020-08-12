@@ -1,4 +1,4 @@
-import {imagePopup, imageCapture, imageTitle, togglePopup} from './utils.js';
+import {imagePopup, imageCapture, imageTitle, togglePopup} from '../utils/constants.js';
 
 export default class Card {
   constructor(data, cardSelector) {

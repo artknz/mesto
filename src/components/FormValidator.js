@@ -1,4 +1,4 @@
-import {onDisableButton, offDisableButton} from './utils.js';
+import {onDisableButton, offDisableButton} from '../utils/constants.js';
 
 export default class FormValidator {
   constructor(config, formElement) {

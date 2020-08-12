@@ -31,6 +31,9 @@ export const imageCapture = document.querySelector('.popup__capture');
 export const imageTitle = document.querySelector('.popup__titile');
 export const imagePopupClose = document.querySelector('.popup__close_type_image');
 
+export const initialCardsElement = '.elements';
+export const cardsTemplateElement = '.elements-template';
+
 // Обработчик открытия/закрытия попапа и слушатели закрытия по esc/overlay
 export const togglePopup = function(popup) {
   popup.classList.toggle('popup_opened');

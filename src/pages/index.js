@@ -1,6 +1,7 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import {initialCards, togglePopup, config, onDisableButton} from './utils.js';
+import Card from '../components/card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import {initialCards, initialCardsElement, cardsTemplateElement, togglePopup, config, onDisableButton} from '../utils/constants.js';
 import '../pages/index.css';
 
 //Переменные редактирования профиля
@@ -20,10 +21,10 @@ const profileStatus = document.querySelector('.profile__status');
 const formAdd = document.querySelector('.popup__container_type_add');
 
 const addCardPopup = document.querySelector('.popup_addcard');
-const initialCardsElement = document.querySelector('.elements');
+// const initialCardsElement = document.querySelector('.elements');
 const addButtonElement = document.querySelector('.profile__add-button');
 const closeButtonCards = document.querySelector('.popup__close_type_cards');
-const cardsTemplateElement = document.querySelector('.elements-template');
+// const cardsTemplateElement = document.querySelector('.elements-template');
 
 const titleInput = document.querySelector('.popup__field_type_title');
 const linkInput = document.querySelector('.popup__field_type_link');
@@ -81,15 +82,29 @@ addButtonElement.addEventListener('click', () => togglePopup(addCardPopup));
 closeButtonCards.addEventListener('click', () => togglePopup(addCardPopup));
 formAdd.addEventListener('submit', handlerAddFormSubmit);
 
-initialCards.forEach((item) => {
-  const card = new Card(item, cardsTemplateElement);
-  const element = card.generateCard();
+// initialCards.forEach((item) => {
+//   const card = new Card(item, cardsTemplateElement);
+//   const element = card.generateCard();
 
-  initialCardsElement.prepend(element);
-});
+//   initialCardsElement.prepend(element);
+// });
 
 const formEditValidator = new FormValidator(config, formEdit);
 formEditValidator.enableValidation();
 
 const formAddValidator = new FormValidator(config, formAdd);
 formAddValidator.enableValidation();
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, cardsTemplateElement);
+    const element = card.generateCard();
+
+    cardList.addItem(element);
+    },
+  },
+  initialCardsElement
+);
+
+cardList.renderItems();
