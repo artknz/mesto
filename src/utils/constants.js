@@ -26,34 +26,37 @@ export const initialCards = [{
 ];
 
 //Переменные попапа картинки
-export const imagePopup = document.querySelector('.popup_image');
+export const imagePopup = '.popup_image';
 export const imageCapture = document.querySelector('.popup__capture');
 export const imageTitle = document.querySelector('.popup__titile');
 export const imagePopupClose = document.querySelector('.popup__close_type_image');
+
+export const titleInput = document.querySelector('.popup__field_type_title');
+export const linkInput = document.querySelector('.popup__field_type_link');
 
 export const initialCardsElement = '.elements';
 export const cardsTemplateElement = '.elements-template';
 
 // Обработчик открытия/закрытия попапа и слушатели закрытия по esc/overlay
-export const togglePopup = function(popup) {
-  popup.classList.toggle('popup_opened');
+// export const togglePopup = function(popup) {
+//   popup.classList.toggle('popup_opened');
 
-  if(popup.classList.contains('popup_opened')) {
-    document.addEventListener('keydown', closeEsc);
-    popup.addEventListener('click', closePopupByOverlay);
-  } else {
-    document.removeEventListener('keydown', closeEsc);
-    popup.removeEventListener('click', closePopupByOverlay);
-  }
-}
+//   if(popup.classList.contains('popup_opened')) {
+//     document.addEventListener('keydown', closeEsc);
+//     popup.addEventListener('click', closePopupByOverlay);
+//   } else {
+//     document.removeEventListener('keydown', closeEsc);
+//     popup.removeEventListener('click', closePopupByOverlay);
+//   }
+// }
 
 //Функция закрытия попапов клавишей esc
-function closeEsc (e) {
-  if (e.keyCode === 27) {
-    const openedPopup = document.querySelector('.popup_opened');
-    togglePopup(openedPopup);
-  }
-}
+// function closeEsc (e) {
+//   if (e.keyCode === 27) {
+//     const openedPopup = document.querySelector('.popup_opened');
+//     togglePopup(openedPopup);
+//   }
+// }
 
 //Функция закрытия попапов по клику на overlay
 const closePopupByOverlay = function (e) {
@@ -64,7 +67,7 @@ const closePopupByOverlay = function (e) {
 };
 
 //Закрытие попапа картинки
-imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
+// imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
 
 export const config = {
   formSelector: '.popup__container_form',

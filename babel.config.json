@@ -13,5 +13,8 @@
         "corejs": "3.6.4"
       }
     ]
+  ],
+  "plugins": [
+    ["transform-class-properties", { "spec": true }]
   ]
 }

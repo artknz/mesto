@@ -1,10 +1,12 @@
-import {imagePopup, imageCapture, imageTitle, togglePopup} from '../utils/constants.js';
+import PopupWithImage from './PopupWithImage';
+import {imagePopup, imageCapture, imageTitle} from '../utils/constants.js';
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this.handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -34,9 +36,7 @@ export default class Card {
   _setEventListeners() {
     this._cardElement.querySelector('.element__delete').addEventListener('click', this._deleteCard);
     this._cardElement.querySelector('.element__like').addEventListener('click', this._likeCard);
-    this._cardElement.querySelector('.element__image').addEventListener('click', () => {
-      this._handleOpenPopup();
-    });
+    this._cardElement.querySelector('.element__image').addEventListener('click', this.handleCardClick);
   }
 
   // Удаление карточки
@@ -49,11 +49,9 @@ export default class Card {
     e.target.closest('.element__like').classList.toggle('element_liked');
   }
 
-  //Открытие попапа картинки
-  _handleOpenPopup() {
-      imageCapture.src = this._cardImage.src;
-      imageCapture.alt = this._cardImage.alt;
-      imageTitle.textContent = this._cardImage.alt;
-      togglePopup(imagePopup);
-  }
+  // //Открытие попапа картинки
+  // handleCardClick() {
+  //   const openImagePopup = new PopupWithImage(imagePopup);
+  //   openImagePopup.open();
+  // }
 }
