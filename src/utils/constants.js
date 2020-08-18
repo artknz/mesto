@@ -25,7 +25,7 @@ export const initialCards = [{
 }
 ];
 
-//Переменные попапа картинки
+//Переменные
 export const imagePopup = '.popup_image';
 export const imageCapture = document.querySelector('.popup__capture');
 export const imageTitle = document.querySelector('.popup__titile');
