@@ -37,37 +37,18 @@ export const linkInput = document.querySelector('.popup__field_type_link');
 export const initialCardsElement = '.elements';
 export const cardsTemplateElement = '.elements-template';
 
-// Обработчик открытия/закрытия попапа и слушатели закрытия по esc/overlay
-// export const togglePopup = function(popup) {
-//   popup.classList.toggle('popup_opened');
+export const profileName = '.profile__name';
+export const profileStatus = '.profile__status';
 
-//   if(popup.classList.contains('popup_opened')) {
-//     document.addEventListener('keydown', closeEsc);
-//     popup.addEventListener('click', closePopupByOverlay);
-//   } else {
-//     document.removeEventListener('keydown', closeEsc);
-//     popup.removeEventListener('click', closePopupByOverlay);
-//   }
-// }
+export const editProfilePopup = '.popup_profile';
+export const formEdit = document.querySelector('.popup_container_type_edit');
+export const popupEditOpenButton = document.querySelector('.profile__edit-button');
+export const nameInput = document.querySelector('.popup__field_type_name');
+export const jobInput = document.querySelector('.popup__field_type_status');
 
-//Функция закрытия попапов клавишей esc
-// function closeEsc (e) {
-//   if (e.keyCode === 27) {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     togglePopup(openedPopup);
-//   }
-// }
-
-//Функция закрытия попапов по клику на overlay
-const closePopupByOverlay = function (e) {
-  if (event.target === event.currentTarget) {
-    const openedOverlay = document.querySelector('.popup_opened');
-    togglePopup(openedOverlay);
-  }
-};
-
-//Закрытие попапа картинки
-// imagePopupClose.addEventListener('click', () => togglePopup(imagePopup));
+export const formAdd = document.querySelector('.popup__container_type_add');
+export const addCardPopup = '.popup_addcard';
+export const addButtonElement = document.querySelector('.profile__add-button');
 
 export const config = {
   formSelector: '.popup__container_form',

@@ -1,6 +1,3 @@
-import PopupWithImage from './PopupWithImage';
-import {imagePopup, imageCapture, imageTitle} from '../utils/constants.js';
-
 export default class Card {
   constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
@@ -48,10 +45,4 @@ export default class Card {
   _likeCard(e) {
     e.target.closest('.element__like').classList.toggle('element_liked');
   }
-
-  // //Открытие попапа картинки
-  // handleCardClick() {
-  //   const openImagePopup = new PopupWithImage(imagePopup);
-  //   openImagePopup.open();
-  // }
 }
