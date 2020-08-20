@@ -1,4 +1,4 @@
-import Card from '../components/card.js';
+import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -23,28 +23,26 @@ import {
 } from '../utils/constants.js';
 import '../pages/index.css';
 
+const renderCard = item => {
+  const card = new Card({
+    data: item,
+    handleCardClick: () => {
+      popupImage.open(item);
+      popupImage.setEventListeners();
+    }
+  },
+  cardsTemplateElement);
+  cardList.addItem(card.generateCard());
+}
+
 //Попап Image
 const popupImage = new PopupWithImage(imagePopup);
 
 //Добавление карточек
 const cardList = new Section({
   items: initialCards,
-  renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupImage.open(item);
-        popupImage.setEventListeners();
-      }
-    },
-    cardsTemplateElement
-    );
-    const element = card.generateCard();
-    cardList.addItem(element);
-    },
-  },
-  initialCardsElement
-);
+  renderer: renderCard,
+  }, initialCardsElement);
 
 cardList.renderItems();
 
@@ -69,18 +67,7 @@ popupEditOpenButton.addEventListener('click', () => {
 //Попап AddCard
 const addNewCard = new PopupWithForm({
   popupSelector: addCardPopup,
-  handleFormSubmit: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupImage.open(item);
-        popupImage.setEventListeners();
-      }
-    },
-    cardsTemplateElement);
-    const element = card.generateCard();
-    cardList.addItem(element);
-  }
+  handleFormSubmit: renderCard,
 })
 
 //Слушатели AddCard
