@@ -32,6 +32,7 @@ const api = new Api({
 });
 
 api.getInitialCards().then(item => {
+
   const renderCard = item => {
     const card = new Card({
       data: item,
@@ -44,7 +45,7 @@ api.getInitialCards().then(item => {
     cardList.addItem(card.generateCard());
   }
 
-  //Добавление карточек
+  //Начальное добавление карточек
   const cardList = new Section({
     items: item,
     renderer: renderCard,
@@ -55,7 +56,10 @@ api.getInitialCards().then(item => {
   //Попап AddCard
   const addNewCard = new PopupWithForm({
     popupSelector: addCardPopup,
-    handleFormSubmit: renderCard,
+    handleFormSubmit: (item) => {
+      api.addNewCard(item.name, item.link)
+      renderCard
+    },
   })
   //Слушатели AddCard
   addNewCard.setEventListeners();
@@ -70,7 +74,12 @@ api.getUserInfo().then(data => {
 
   const popupProfile = new PopupWithForm({
     popupSelector: editProfilePopup,
-    handleFormSubmit: (data) => userData.setUserInfo(data)
+    handleFormSubmit: (data) => {
+      api.editUserInfo(data.name, data.about)
+      .then(() => {
+        userData.setUserInfo(data)
+      })
+    }
   });
 
   popupProfile.setEventListeners();

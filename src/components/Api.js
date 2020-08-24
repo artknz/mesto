@@ -4,20 +4,30 @@ export default class Api {
     this.headers = headers;
   }
 
+  _statusResponse(res) {
+    if(res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers
     })
-    .then(res => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(this._statusResponse);
   }
 
-  addNewCard() {
-
+  addNewCard(name, link) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name,
+        link
+      })
+    })
+    .then(this._statusResponse);
   }
 
   deleteCard() {
@@ -28,10 +38,18 @@ export default class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
-      .then(res => res.json())
+    .then(this._statusResponse);
   }
 
-  editUserInfo() {
-
+  editUserInfo(name, about) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name,
+        about
+      })
+    })
+    .then(this._statusResponse);
   }
 }

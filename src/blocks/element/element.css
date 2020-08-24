@@ -4,6 +4,8 @@
 @import url(./__like/element__like.css);
 @import url(./__delete/element__delete.css);
 @import url(./_liked/element_liked.css);
+@import url(./__like-count/element__like-count.css);
+@import url(./__likes/element__likes.css);
 
 .element {
   background-color: #ffffff;

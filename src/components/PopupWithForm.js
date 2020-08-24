@@ -1,5 +1,5 @@
 import Popup from './Popup.js';
-import {config, onDisableButton} from '../utils/constants.js';
+import {config} from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
   constructor({popupSelector, handleFormSubmit}) {
@@ -21,8 +21,6 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-
-      onDisableButton(this._button, config.inactiveButtonClass)
       this.close();
     })
   }
