@@ -10,6 +10,7 @@
 @import url(./__field-error/popup__field-error.css);
 @import url(./__field-error/_active/popup__field-error_active.css);
 @import url(./__save/_inactive/popup__save_inactive.css);
+@import url(./__save/_type/popup__save_type_delete.css);
 
 .popup {
   position: fixed;

@@ -19,9 +19,9 @@
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" aria-label="Редактировать" class="profile__edit-button"></button>
-          <p class="profile__status">Исследователь океана</p>
+          <p class="profile__status"></p>
         </div>
         <button type="button" aria-label="Добавить" class="profile__add-button"></button>
       </section>
@@ -40,7 +40,7 @@
         <input id="name-input" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" class="popup__field popup__field_type_name" required>
         <span id="name-input-error" class="popup__field-error"></span>
 
-        <input id="status-input" type="text" placeholder="Статус" name="status" minlength="2" maxlength="200" class="popup__field popup__field_type_status" required>
+        <input id="status-input" type="text" placeholder="Статус" name="about" minlength="2" maxlength="200" class="popup__field popup__field_type_status" required>
         <span id="status-input-error" class="popup__field-error"></span>
 
         <button type="submit" class="popup__save popup__save_type_edit">Сохранить</button>
@@ -68,6 +68,23 @@
         <img src="#" alt="" class="popup__capture">
         <h4 class="popup__titile popup__titile_type_image"></h4>
       </div>
+    </section>
+
+    <section class="popup popup_delete">
+      <form name="delete-popup" novalidate method="POST" action="#" class="popup__container popup__container_form popup__container_type_delete">
+        <button type="button" aria-label="Закрыть" class="popup__close popup__close_type_delete"></button>
+        <h3 class="popup__title">Вы уверены?</h3>
+        <button type="submit" class="popup__save popup__save_type_delete">Да</button>
+      </form>
+    </section>
+
+    <section class="popup popup_avatar">
+      <form name="avatar-popup" novalidate method="POST" action="#" class="popup__container popup__container_form popup__container_type_delete">
+        <button type="button" aria-label="Закрыть" class="popup__close popup__close_type_avatar"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <input id="title-input" type="text" placeholder="Ссылка на изображение" name="avatar" minlength="1" maxlength="30" class="popup__field popup__field_type_avatar" required>
+        <button type="submit" class="popup__save popup__save_type_avatar">Сохранить</button>
+      </form>
     </section>
 
     <template class="elements-template">
