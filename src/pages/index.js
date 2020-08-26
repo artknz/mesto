@@ -37,6 +37,13 @@ const api = new Api({
   }
 });
 
+const renderLoading = loading => {
+  const activePopup = document.querySelector('.popup_opened');
+  const loadingButton = activePopup.querySelector('.popup__save');
+
+  loadingButton.textContent = loading ? 'Сохраняется...' : 'Сохранить';
+}
+
 let userId
 
 api.getInitialCards().then(item => {
@@ -55,11 +62,29 @@ api.getInitialCards().then(item => {
       handleDelete: () => {
         deletePopup.open();
         deletePopup.setSubmitHandler(() => {
+          renderLoading(true)
           api.deleteCard(item._id)
           .then(() => {
             card._deleteCard();
           })
+          .catch((err) => {
+            console.log(err)
+          })
+          .finally(() => renderLoading(false))
         })
+      },
+      handleLike: () => {
+        const isLiked = card.isLiked();
+        card._likeCard()
+        if(isLiked) {
+          api.deleteLikeCard(item._id)
+          .then(item => card.updateLikes(item.likes))
+          .catch((err) => {console.log(err)})
+        } else {
+          api.likeCard(item._id)
+          .then(item => card.updateLikes(item.likes))
+          .catch((err) => {console.log(err)})
+        }
       }
     },
     cardsTemplateElement);
@@ -78,25 +103,20 @@ api.getInitialCards().then(item => {
   const addNewCard = new PopupWithForm({
     popupSelector: addCardPopup,
     handleFormSubmit: (item) => {
+      renderLoading(true)
       api.addNewCard(item.name, item.link)
       .then((item) => {
         renderCard(item)
       })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => renderLoading(false))
     },
   })
   //Слушатели AddCard
   addNewCard.setEventListeners();
   addButtonElement.addEventListener('click', () => addNewCard.open());
-
-  // const deletePopup = new PopupWithDelete({
-  //   popupSelector: popupDelete,
-  //   handleFormSubmit: () => {
-  //     api.deleteCard()
-  //   }
-  // })
-
-  // deletePopup.setEventListeners();
-  // deleteButtonElement.addEventListener('click', () => deletePopup.open());
 })
 
 api.getUserInfo().then(data => {
@@ -110,10 +130,15 @@ api.getUserInfo().then(data => {
   const popupProfile = new PopupWithForm({
     popupSelector: editProfilePopup,
     handleFormSubmit: (data) => {
+      renderLoading(true)
       api.editUserInfo(data.name, data.about)
       .then(() => {
         userData.setUserInfo(data)
       })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => renderLoading(false))
     }
   });
 
@@ -130,11 +155,15 @@ api.getUserInfo().then(data => {
   const avatarPopup = new PopupWithAvatar({
     popupSelector: popupAvatar,
     handleFormSubmit: (data) => {
-      console.log(data)
+      renderLoading(true)
       api.editUserAvatar(data)
       .then((data) => {
         userData.setUserAvatar(data)
       })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => renderLoading(false))
     }
   })
 
