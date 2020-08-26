@@ -30,8 +30,12 @@ export default class Api {
     .then(this._statusResponse);
   }
 
-  deleteCard() {
-
+  deleteCard(id) {
+    return fetch(`${this.baseUrl}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+    .then(this._statusResponse);
   }
 
   getUserInfo() {
@@ -48,6 +52,17 @@ export default class Api {
       body: JSON.stringify({
         name,
         about
+      })
+    })
+    .then(this._statusResponse);
+  }
+
+  editUserAvatar(avatar) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar
       })
     })
     .then(this._statusResponse);
