@@ -37,8 +37,8 @@ const api = new Api({
   }
 });
 
-const renderLoading = loading => {
-  const activePopup = document.querySelector('.popup_opened');
+const renderLoading = (loading, popupSelector) => {
+  const activePopup = document.querySelector(popupSelector);
   const loadingButton = activePopup.querySelector('.popup__save');
 
   loadingButton.textContent = loading ? 'Сохраняется...' : 'Сохранить';
@@ -62,7 +62,7 @@ api.getInitialCards().then(item => {
       handleDelete: () => {
         deletePopup.open();
         deletePopup.setSubmitHandler(() => {
-          renderLoading(true)
+          renderLoading(true, popupDelete)
           api.deleteCard(item._id)
           .then(() => {
             card._deleteCard();
@@ -70,12 +70,11 @@ api.getInitialCards().then(item => {
           .catch((err) => {
             console.log(err)
           })
-          .finally(() => renderLoading(false))
+          .finally(() => renderLoading(false, popupDelete))
         })
       },
       handleLike: () => {
         const isLiked = card.isLiked();
-        card._likeCard()
         if(isLiked) {
           api.deleteLikeCard(item._id)
           .then(item => card.updateLikes(item.likes))
@@ -103,7 +102,7 @@ api.getInitialCards().then(item => {
   const addNewCard = new PopupWithForm({
     popupSelector: addCardPopup,
     handleFormSubmit: (item) => {
-      renderLoading(true)
+      renderLoading(true, addCardPopup)
       api.addNewCard(item.name, item.link)
       .then((item) => {
         renderCard(item)
@@ -111,7 +110,7 @@ api.getInitialCards().then(item => {
       .catch((err) => {
         console.log(err)
       })
-      .finally(() => renderLoading(false))
+      .finally(() => renderLoading(false, addCardPopup))
     },
   })
   //Слушатели AddCard
@@ -130,7 +129,7 @@ api.getUserInfo().then(data => {
   const popupProfile = new PopupWithForm({
     popupSelector: editProfilePopup,
     handleFormSubmit: (data) => {
-      renderLoading(true)
+      renderLoading(true, editProfilePopup)
       api.editUserInfo(data.name, data.about)
       .then(() => {
         userData.setUserInfo(data)
@@ -138,7 +137,7 @@ api.getUserInfo().then(data => {
       .catch((err) => {
         console.log(err)
       })
-      .finally(() => renderLoading(false))
+      .finally(() => renderLoading(false, editProfilePopup))
     }
   });
 
@@ -155,7 +154,7 @@ api.getUserInfo().then(data => {
   const avatarPopup = new PopupWithAvatar({
     popupSelector: popupAvatar,
     handleFormSubmit: (data) => {
-      renderLoading(true)
+      renderLoading(true, popupAvatar)
       api.editUserAvatar(data)
       .then((data) => {
         userData.setUserAvatar(data)
@@ -163,7 +162,7 @@ api.getUserInfo().then(data => {
       .catch((err) => {
         console.log(err)
       })
-      .finally(() => renderLoading(false))
+      .finally(() => renderLoading(false, popupAvatar))
     }
   })
 

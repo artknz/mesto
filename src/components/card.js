@@ -9,7 +9,6 @@ export default class Card {
     this.handleCardClick = handleCardClick;
     this.handleDelete = handleDelete;
     this.handleLike = handleLike;
-    console.log(this._userId)
   }
 
   _getLikesCount() {
@@ -23,10 +22,11 @@ export default class Card {
     } else {
       this._cardLikes.textContent = this._likes.length;
     }
+    this._likeCard()
   }
 
   isLiked() {
-    return this._likes.includes(this._userId);
+    return !!this._likes.find(like => like._id === this._userId);
   }
 
   _getTemplate() {
@@ -76,6 +76,6 @@ export default class Card {
 
   //Лайк карточки
   _likeCard() {
-    this._cardElement.querySelector('.element__like').classList.add('element_liked');
+    this._cardElement.querySelector('.element__like').classList.toggle('element_liked');
   }
 }
