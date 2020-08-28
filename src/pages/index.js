@@ -40,15 +40,13 @@ Promise.all([ api.getInitialCards(), api.getUserInfo() ])
   .then((result) => {
     const [item, data] = result
 
-  let userId
-
   const deletePopup = new PopupWithDelete(popupDelete);
   deletePopup.setEventListeners();
 
   const renderCard = item => {
     const card = new Card({
       data: item,
-      id: userId,
+      id: data._id,
       handleCardClick: () => {
         popupImage.open(item);
       },
@@ -115,8 +113,6 @@ Promise.all([ api.getInitialCards(), api.getUserInfo() ])
   //Слушатели AddCard
   addNewCard.setEventListeners();
   addButtonElement.addEventListener('click', () => addNewCard.open());
-
-  userId = data._id;
 
   //Попап Profile
   const userData = new UserInfo(profileName, profileStatus, profileAvatar);

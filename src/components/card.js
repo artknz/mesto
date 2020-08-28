@@ -31,7 +31,7 @@ export default class Card {
 
   _getTemplate() {
     const cardTemplate = document
-    .querySelector('.elements-template')
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.element')
     .cloneNode(true)
@@ -43,7 +43,6 @@ export default class Card {
     this._cardElement = this._getTemplate();
     this._cardImage = this._cardElement.querySelector('.element__image');
     this._cardText = this._cardElement.querySelector('.element__text');
-    this._cardClose = this._cardElement.querySelector('.popup__close_type_image');
     this._cardLike = this._cardElement.querySelector('.element__like');
     this._cardLikes = this._cardElement.querySelector('.element__like-count');
     this._cardDelete = this._cardElement.querySelector('.element__delete')
