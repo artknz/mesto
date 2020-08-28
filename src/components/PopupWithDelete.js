@@ -18,8 +18,4 @@ export default class PopupWithDelete extends Popup {
   setSubmitHandler(handler) {
     this._handleFormSubmit = handler;
   }
-
-  close() {
-    super.close()
-  }
 }
