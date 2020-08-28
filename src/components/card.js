@@ -26,7 +26,7 @@ export default class Card {
   }
 
   isLiked() {
-    return !!this._likes.find(like => like._id === this._userId);
+      return !!this._likes.find(like => like._id === this._userId);
   }
 
   _getTemplate() {
@@ -70,7 +70,7 @@ export default class Card {
   }
 
   // Удаление карточки
-  _deleteCard() {
+  deleteCard() {
     this._cardElement.remove();
   }
 

@@ -3,7 +3,6 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithAvatar from '../components/PopupWithAvatar.js';
 import PopupWithDelete from '../components/PopupWithDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
@@ -37,16 +36,11 @@ const api = new Api({
   }
 });
 
-const renderLoading = (loading, popupSelector) => {
-  const activePopup = document.querySelector(popupSelector);
-  const loadingButton = activePopup.querySelector('.popup__save');
+Promise.all([ api.getInitialCards(), api.getUserInfo() ])
+  .then((result) => {
+    const [item, data] = result
 
-  loadingButton.textContent = loading ? 'Сохраняется...' : 'Сохранить';
-}
-
-let userId
-
-api.getInitialCards().then(item => {
+  let userId
 
   const deletePopup = new PopupWithDelete(popupDelete);
   deletePopup.setEventListeners();
@@ -57,7 +51,6 @@ api.getInitialCards().then(item => {
       id: userId,
       handleCardClick: () => {
         popupImage.open(item);
-        popupImage.setEventListeners();
       },
       handleDelete: () => {
         deletePopup.open();
@@ -65,7 +58,10 @@ api.getInitialCards().then(item => {
           renderLoading(true, popupDelete)
           api.deleteCard(item._id)
           .then(() => {
-            card._deleteCard();
+            card.deleteCard();
+          })
+          .then(() => {
+            deletePopup.close()
           })
           .catch((err) => {
             console.log(err)
@@ -107,6 +103,9 @@ api.getInitialCards().then(item => {
       .then((item) => {
         renderCard(item)
       })
+      .then(()=> {
+        addNewCard.close()
+      })
       .catch((err) => {
         console.log(err)
       })
@@ -116,9 +115,7 @@ api.getInitialCards().then(item => {
   //Слушатели AddCard
   addNewCard.setEventListeners();
   addButtonElement.addEventListener('click', () => addNewCard.open());
-})
 
-api.getUserInfo().then(data => {
   userId = data._id;
 
   //Попап Profile
@@ -133,6 +130,9 @@ api.getUserInfo().then(data => {
       api.editUserInfo(data.name, data.about)
       .then(() => {
         userData.setUserInfo(data)
+      })
+      .then(() => {
+        popupProfile.close()
       })
       .catch((err) => {
         console.log(err)
@@ -151,13 +151,16 @@ api.getUserInfo().then(data => {
     popupProfile.open();
   });
 
-  const avatarPopup = new PopupWithAvatar({
+  const avatarPopup = new PopupWithForm({
     popupSelector: popupAvatar,
     handleFormSubmit: (data) => {
       renderLoading(true, popupAvatar)
-      api.editUserAvatar(data)
-      .then((data) => {
+      api.editUserAvatar(data.avatar)
+      .then(() => {
         userData.setUserAvatar(data)
+      })
+      .then(() => {
+        avatarPopup.close()
       })
       .catch((err) => {
         console.log(err)
@@ -168,10 +171,11 @@ api.getUserInfo().then(data => {
 
   avatarPopup.setEventListeners();
   avatarButtonElement.addEventListener('click', () => avatarPopup.open())
-})
+  })
 
 //Попап Image
 const popupImage = new PopupWithImage(imagePopup);
+popupImage.setEventListeners();
 
 //Валидация
 const formEditValidator = new FormValidator(config, formEdit);
@@ -179,3 +183,10 @@ formEditValidator.enableValidation();
 
 const formAddValidator = new FormValidator(config, formAdd);
 formAddValidator.enableValidation();
+
+const renderLoading = (loading, popupSelector) => {
+  const activePopup = document.querySelector(popupSelector);
+  const loadingButton = activePopup.querySelector('.popup__save');
+
+  loadingButton.textContent = loading ? 'Сохраняется...' : 'Сохранить';
+}
