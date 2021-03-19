@@ -5,6 +5,7 @@
 
 ### Инструкиця
 **Ссылка на проект -** [Mesto Russia](https://artknz.github.io/mesto/index.html)
+<br />
 **Технологии -** HTML, CSS, JavaScript, API, Webpack
 
 ### План
